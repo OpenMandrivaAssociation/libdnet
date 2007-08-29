@@ -1,10 +1,11 @@
 %define	major 1
-%define libname	%mklibname dnet %{major}
+%define libname %mklibname dnet %{major}
+%define develname %mklibname dnet -d
 
 Summary:	Portable interface to several low-level networking routines
 Name:		libdnet
 Version:	1.11
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	BSD
 Group:		System/Libraries
 URL:		http://libdnet.sourceforge.net/
@@ -14,7 +15,7 @@ Patch3:		libdnet-1.10-nmap1.diff
 Patch4:		libdnet-1.10-nmap2.diff
 BuildRequires:	autoconf2.5
 BuildRequires:	python-devel
-BuildRequires:	pyrex
+BuildRequires:	python-pyrex
 %if %mdkversion >= 1020
 BuildRequires:	multiarch-utils >= 1.0.3
 %endif
@@ -63,15 +64,15 @@ Provides:	%{name}-utils
 %description -n	%{libname}-utils
 Provides a simple test program for the %{libname} library.
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	Static library and header files for the %{libname} library
 Group:		Development/C
 License: 	BSD
-Obsoletes:	%{name}-devel
-Provides:	%{name}-devel
 Requires:	%{libname} = %{version}
+Provides:	%{mklibname dnet 1 -d} = %{version}
+Obsoletes:	%{mklibname dnet 1 -d}
 
-%description -n	%{libname}-devel
+%description -n	%{develname}
 libdnet provides a simplified, portable interface to several
 low-level networking routines, including network address
 manipulation, kernel arp(4) cache and route(4) table lookup and
@@ -138,7 +139,7 @@ popd
 %{_sbindir}/*
 %{_mandir}/man8/*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %if %mdkversion >= 1020
 %multiarch %{multiarch_bindir}/dnet-config
@@ -149,5 +150,3 @@ popd
 %{_libdir}/*.a
 %{_libdir}/*.la
 %{_mandir}/man3/*
-
-
