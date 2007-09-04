@@ -5,7 +5,7 @@
 Summary:	Portable interface to several low-level networking routines
 Name:		libdnet
 Version:	1.11
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	BSD
 Group:		System/Libraries
 URL:		http://libdnet.sourceforge.net/
@@ -58,8 +58,8 @@ manipulation, and raw IP packet and Ethernet frame transmission.
 Summary:	A simple test program for the %{libname} library
 Group:          System/Libraries
 License:	BSD
-Obsoletes:	%{name}-utils
-Provides:	%{name}-utils
+Obsoletes:	%{name}-utils < %{version}-%{release}
+Provides:	%{name}-utils = %{version}-%{release}
 
 %description -n	%{libname}-utils
 Provides a simple test program for the %{libname} library.
@@ -68,9 +68,10 @@ Provides a simple test program for the %{libname} library.
 Summary:	Static library and header files for the %{libname} library
 Group:		Development/C
 License: 	BSD
-Requires:	%{libname} = %{version}
-Provides:	%{mklibname dnet 1 -d} = %{version}
-Obsoletes:	%{mklibname dnet 1 -d}
+Provides:       dnet-devel = %{version}-%{release}
+Provides:	%{mklibname dnet 1 -d} = %{version}-%{release}
+Obsoletes:	%{mklibname dnet 1 -d} < %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
 
 %description -n	%{develname}
 libdnet provides a simplified, portable interface to several
