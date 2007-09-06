@@ -4,14 +4,13 @@
 
 Summary:	Portable interface to several low-level networking routines
 Name:		libdnet
-Version:	1.11
-Release:	%mkrel 5
+Version:	1.12
+Release:	%mkrel 1
 License:	BSD
 Group:		System/Libraries
-URL:		http://libdnet.sourceforge.net/
-Source0:	http://prdownloads.sourceforge.net/libdnet/%{name}-%{version}.tar.bz2
+URL:		http://code.google.com/p/libdnet/
+Source0:	http://libdnet.googlecode.com/files/%{name}-%{version}.tgz
 Patch0:		libdnet-1.11-lib_version_fix.diff
-Patch3:		libdnet-1.10-nmap1.diff
 Patch4:		libdnet-1.10-nmap2.diff
 BuildRequires:	autoconf2.5
 BuildRequires:	python-devel
@@ -84,8 +83,6 @@ manipulation, and raw IP packet and Ethernet frame transmission.
 
 %setup -q -n %{name}-%{version}
 %patch0 -p0
-
-%patch3 -p0
 %patch4 -p0
 
 %build
