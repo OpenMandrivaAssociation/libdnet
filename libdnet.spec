@@ -5,7 +5,7 @@
 Summary:	Portable interface to several low-level networking routines
 Name:		libdnet
 Version:	1.12
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	BSD
 Group:		System/Libraries
 URL:		http://code.google.com/p/libdnet/
@@ -68,6 +68,7 @@ Summary:	Static library and header files for the %{libname} library
 Group:		Development/C
 License: 	BSD
 Provides:       dnet-devel = %{version}-%{release}
+Provides:       %{name}-devel = %{version}-%{release}
 Provides:	%{mklibname dnet 1 -d} = %{version}-%{release}
 Obsoletes:	%{mklibname dnet 1 -d} < %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
