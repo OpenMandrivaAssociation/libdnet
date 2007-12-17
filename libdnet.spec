@@ -18,7 +18,6 @@ BuildRequires:	python-pyrex
 %if %mdkversion >= 1020
 BuildRequires:	multiarch-utils >= 1.0.3
 %endif
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 libdnet provides a simplified, portable interface to several
