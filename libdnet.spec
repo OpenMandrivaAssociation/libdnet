@@ -18,7 +18,7 @@ BuildRequires:	python-pyrex
 %if %mdkversion >= 1020
 BuildRequires:	multiarch-utils >= 1.0.3
 %endif
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 libdnet provides a simplified, portable interface to several
@@ -98,19 +98,19 @@ automake --foreign
 
 %make
 
-pushd python
-    pyrexc dnet.pyx
-    python setup.py build
-popd
+#pushd python
+#    pyrexc dnet.pyx
+#    python setup.py build
+#popd
 
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %makeinstall
 
-pushd python
-    python setup.py install --root=%{buildroot} --install-purelib=%{py_platsitedir}
-popd
+#pushd python
+#    python setup.py install --root=%{buildroot} --install-purelib=%{py_platsitedir}
+#popd
 
 %if %mdkversion >= 1020
 %multiarch_binaries %{buildroot}%{_bindir}/dnet-config
@@ -123,10 +123,10 @@ popd
 
 %postun -n %{libname} -p /sbin/ldconfig
 
-%files -n python-dnet
-%defattr(-,root,root)
-%{py_platsitedir}/dnet.so
-%{py_platsitedir}/*.egg-info
+#%files -n python-dnet
+#%defattr(-,root,root)
+#%{py_platsitedir}/dnet.so
+#%{py_platsitedir}/*.egg-info
 
 %files -n %{libname}
 %defattr(-,root,root)
