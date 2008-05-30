@@ -116,12 +116,12 @@ automake --foreign
 %multiarch_binaries %{buildroot}%{_bindir}/dnet-config
 %endif
 
-%clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-
 %post -n %{libname} -p /sbin/ldconfig
 
 %postun -n %{libname} -p /sbin/ldconfig
+
+%clean
+[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 #%files -n python-dnet
 #%defattr(-,root,root)
