@@ -5,7 +5,7 @@
 Summary:	Portable interface to several low-level networking routines
 Name:		libdnet
 Version:	1.12
-Release:	%mkrel 6
+Release:	%mkrel 7
 License:	BSD
 Group:		System/Libraries
 URL:		http://code.google.com/p/libdnet/
