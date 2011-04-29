@@ -15,9 +15,7 @@ Patch4:		libdnet-1.10-nmap2.diff
 BuildRequires:	autoconf2.5
 BuildRequires:	python-devel
 BuildRequires:	python-pyrex
-%if %mdkversion >= 1020
 BuildRequires:	multiarch-utils >= 1.0.3
-%endif
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -87,34 +85,16 @@ manipulation, and raw IP packet and Ethernet frame transmission.
 %patch4 -p0
 
 %build
-export WANT_AUTOCONF_2_5=1
-libtoolize --copy --force
-aclocal -I config
-autoheader
-autoconf
-automake --foreign
-
+autoreconf -fi
 %configure2_5x
-
 %make
-
-#pushd python
-#    pyrexc dnet.pyx
-#    python setup.py build
-#popd
 
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
-%makeinstall
+%makeinstall_std
 
-#pushd python
-#    python setup.py install --root=%{buildroot} --install-purelib=%{py_platsitedir}
-#popd
-
-%if %mdkversion >= 1020
 %multiarch_binaries %{buildroot}%{_bindir}/dnet-config
-%endif
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
@@ -127,15 +107,10 @@ automake --foreign
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
-#%files -n python-dnet
-#%defattr(-,root,root)
-#%{py_platsitedir}/dnet.so
-#%{py_platsitedir}/*.egg-info
-
 %files -n %{libname}
 %defattr(-,root,root)
 %doc README THANKS TODO
-%{_libdir}/*.so.*
+%{_libdir}/*.so.%{major}*
 
 %files -n %{libname}-utils
 %defattr(-,root,root)
@@ -144,9 +119,7 @@ automake --foreign
 
 %files -n %{develname}
 %defattr(-,root,root)
-%if %mdkversion >= 1020
-%multiarch %{multiarch_bindir}/dnet-config
-%endif
+%{multiarch_bindir}/dnet-config
 %{_bindir}/dnet-config
 %{_includedir}/*
 %{_libdir}/*.so
