@@ -10,7 +10,7 @@ License:	BSD
 Group:		System/Libraries
 URL:		http://code.google.com/p/libdnet/
 Source0:	http://libdnet.googlecode.com/files/%{name}-%{version}.tgz
-Patch0:		libdnet-1.11-lib_version_fix.diff
+Patch0:		libdnet-shrext.patch
 Patch4:		libdnet-1.10-nmap2.diff
 BuildRequires:	autoconf2.5
 BuildRequires:	python-devel
@@ -81,11 +81,10 @@ manipulation, and raw IP packet and Ethernet frame transmission.
 %prep
 
 %setup -q -n %{name}-%{version}
-%patch0 -p0
+%patch0 -p1
 %patch4 -p0
 
 %build
-autoreconf -fi
 %configure2_5x
 %make
 
