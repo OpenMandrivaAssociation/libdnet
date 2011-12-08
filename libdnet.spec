@@ -5,18 +5,16 @@
 Summary:	Portable interface to several low-level networking routines
 Name:		libdnet
 Version:	1.12
-Release:	%mkrel 11
+Release:	12
 License:	BSD
 Group:		System/Libraries
 URL:		http://code.google.com/p/libdnet/
 Source0:	http://libdnet.googlecode.com/files/%{name}-%{version}.tgz
 Patch0:		libdnet-shrext.patch
 Patch4:		libdnet-1.10-nmap2.diff
-BuildRequires:	autoconf2.5
+BuildRequires:	autoconf automake libtool
 BuildRequires:	python-devel
 BuildRequires:	python-pyrex
-BuildRequires:	multiarch-utils >= 1.0.3
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 libdnet provides a simplified, portable interface to several
@@ -69,7 +67,7 @@ Provides:       dnet-devel = %{version}-%{release}
 Provides:       %{name}-devel = %{version}-%{release}
 Provides:	%{mklibname dnet 1 -d} = %{version}-%{release}
 Obsoletes:	%{mklibname dnet 1 -d} < %{version}-%{release}
-Requires:	%{libname} = %{version}-%{release}
+Requires:	%{libname} >= %{version}-%{release}
 
 %description -n	%{develname}
 libdnet provides a simplified, portable interface to several
@@ -89,39 +87,26 @@ manipulation, and raw IP packet and Ethernet frame transmission.
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %makeinstall_std
 
 %multiarch_binaries %{buildroot}%{_bindir}/dnet-config
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+# cleanup
+rm -f %{buildroot}%{_libdir}/*.*a
 
 %files -n %{libname}
-%defattr(-,root,root)
 %doc README THANKS TODO
 %{_libdir}/*.so.%{major}*
 
 %files -n %{libname}-utils
-%defattr(-,root,root)
 %{_sbindir}/*
 %{_mandir}/man8/*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %{multiarch_bindir}/dnet-config
 %{_bindir}/dnet-config
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/*.a
-%{_libdir}/*.la
 %{_mandir}/man3/*
