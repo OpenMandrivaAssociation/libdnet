@@ -11,8 +11,8 @@
     given source address rather than only the main interface address.
 
 
---- src/intf.c	2005-02-10 17:57:35.000000000 +0100
-+++ src/intf.c.oden	2005-12-10 20:16:15.000000000 +0100
+--- ./src/intf.c	2005-02-10 17:57:35.000000000 +0100
++++ ./src/intf.c.oden	2005-12-10 20:16:15.000000000 +0100
 @@ -119,12 +119,16 @@
  intf_open(void)
  {
