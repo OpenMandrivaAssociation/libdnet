@@ -14,7 +14,7 @@ Patch0:		libdnet-shrext.patch
 Patch4:		libdnet-1.10-nmap2.diff
 BuildRequires:	libtool
 BuildRequires:	python-pyrex
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 
 %description
 libdnet provides a simplified, portable interface to several
@@ -71,7 +71,9 @@ packet and Ethernet frame transmission.
 %apply_patches
 
 %build
-%configure2_5x \
+export PYTHON=%{__python2}
+
+%configure \
 	--disable-static \
 	--with-python
 %make
@@ -97,6 +99,6 @@ packet and Ethernet frame transmission.
 %{_mandir}/man3/*
 
 %files -n python-dnet
-%{py_platsitedir}/*.egg-info
-%{py_platsitedir}/*.so
+%{py2_platsitedir}/*.egg-info
+%{py2_platsitedir}/*.so
 
