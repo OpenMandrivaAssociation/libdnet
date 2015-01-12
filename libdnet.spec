@@ -75,7 +75,8 @@ export PYTHON=%{__python2}
 
 %configure \
 	--disable-static \
-	--with-python
+	--with-python="%{__python2}"
+
 %make
 
 %install
