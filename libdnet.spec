@@ -2,6 +2,8 @@
 %define libname	%mklibname dnet %{major}
 %define devname	%mklibname dnet -d
 
+%define _disable_lto 1
+
 Summary:	Portable interface to several low-level networking routines
 Name:		libdnet
 Version:	1.12
