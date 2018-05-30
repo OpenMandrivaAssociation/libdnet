@@ -74,6 +74,8 @@ packet and Ethernet frame transmission.
 
 %build
 export PYTHON=%{__python2}
+export CC=%{__cc}
+export LD=%{__cc}
 
 %configure \
 	--disable-static \
