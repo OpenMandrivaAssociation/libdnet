@@ -7,7 +7,7 @@
 Summary:	Portable interface to several low-level networking routines
 Name:		libdnet
 Version:	1.12
-Release:	23
+Release:	24
 License:	BSD
 Group:		System/Libraries
 Url:		https://github.com/dugsong/libdnet
@@ -84,8 +84,6 @@ export PYTHON=%{__python2}
 %install
 %makeinstall_std
 
-%multiarch_binaries %{buildroot}%{_bindir}/dnet-config
-
 %files -n dnet
 %doc README THANKS TODO
 %{_sbindir}/*
@@ -95,7 +93,6 @@ export PYTHON=%{__python2}
 %{_libdir}/libdnet.so.%{major}*
 
 %files -n %{devname}
-%{multiarch_bindir}/dnet-config
 %{_bindir}/dnet-config
 %{_includedir}/*
 %{_libdir}/*.so
