@@ -10,7 +10,7 @@ Version:	1.12
 Release:	23
 License:	BSD
 Group:		System/Libraries
-Url:		http://code.google.com/p/libdnet/
+Url:		https://github.com/dugsong/libdnet
 Source0:	http://libdnet.googlecode.com/files/%{name}-%{version}.tgz
 Patch0:		libdnet-shrext.patch
 Patch4:		libdnet-1.10-nmap2.diff
