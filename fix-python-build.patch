@@ -1,0 +1,13 @@
+diff --git a/python/setup.py.in b/python/setup.py.in
+index 7da2812..df21018 100644
+--- a/python/setup.py.in
++++ b/python/setup.py.in
+@@ -2,7 +2,7 @@
+ 
+ import glob, os, sys
+ from distutils.core import setup, Extension
+-from Cython.Build import cythonize
++from Cython.Build.Dependencies import cythonize
+ 
+ dnet_srcs = [ '@srcdir@/dnet.pyx' ]
+ dnet_incdirs = [ '@top_srcdir@/include' ]

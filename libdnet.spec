@@ -6,17 +6,19 @@
 
 Summary:	Portable interface to several low-level networking routines
 Name:		libdnet
-Version:	1.12
-Release:	25
+Version:	1.14
+Release:	1
 License:	BSD
 Group:		System/Libraries
 Url:		https://github.com/dugsong/libdnet
-Source0:	http://libdnet.googlecode.com/files/%{name}-%{version}.tgz
-Patch0:		libdnet-shrext.patch
-Patch4:		libdnet-1.10-nmap2.diff
+Source0:	http://libdnet.googlecode.com/files/%{name}-%{name}-%{version}.tar.gz
+Patch0:		fix-python-build.patch
+
 BuildRequires:	libtool
 BuildRequires:	python-pyrex
-BuildRequires:	pkgconfig(python2)
+BuildRequires:	python-cython
+BuildRequires:	pkgconfig(python-3.9)
+
 
 %description
 libdnet provides a simplified, portable interface to several
@@ -69,25 +71,26 @@ firewalling, network interface lookup and manipulation, and raw IP
 packet and Ethernet frame transmission.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -n %{name}-%{name}-%{version} -p1
 
 %build
-export PYTHON=%{__python2}
-export CC=%{__cc}
-export LD=%{__cc}
+export PYTHON=%{__python3}
 
 %configure \
 	--disable-static \
-	--with-python="%{__python2}"
+	--with-python="%{__python3}" \
 
-%make
+# Hack to disable --no-udefined to allow build of python lib
+
+sed -i s/"no-undefined"/"no-undefined -Wl,--warn-unresolved-symbols"/ python/Makefile
+
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n dnet
-%doc README THANKS TODO
+%doc README.md THANKS TODO
 %{_sbindir}/*
 %{_mandir}/man8/*
 
@@ -101,6 +104,6 @@ export LD=%{__cc}
 %{_mandir}/man3/*
 
 %files -n python-dnet
-%{py2_platsitedir}/*.egg-info
-%{py2_platsitedir}/*.so
+%{py3_platsitedir}/*.egg-info
+%{py3_platsitedir}/*.so
 
