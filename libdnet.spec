@@ -18,6 +18,7 @@ BuildRequires:	libtool
 BuildRequires:	python-pyrex
 BuildRequires:	python-cython
 BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(check)
 
 %description
 libdnet provides a simplified, portable interface to several
