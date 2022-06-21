@@ -15,7 +15,7 @@ Source0:	http://libdnet.googlecode.com/files/%{name}-%{name}-%{version}.tar.gz
 Patch0:		fix-python-build.patch
 
 BuildRequires:	libtool
-BuildRequires:	python-pyrex
+#BuildRequires:	python-pyrex
 BuildRequires:	python-cython
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(check)
