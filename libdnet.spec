@@ -19,6 +19,7 @@ BuildRequires:	python-pyrex
 BuildRequires:	python-cython
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(check)
+BuildRequires:	pkgconfig(libbsd)
 
 %description
 libdnet provides a simplified, portable interface to several
@@ -74,8 +75,8 @@ packet and Ethernet frame transmission.
 %autosetup -n %{name}-%{name}-%{version} -p1
 
 %build
-export CC=gcc
-export CXX=g++
+#export CC=gcc
+#export CXX=g++
 export PYTHON=%{__python3}
 
 %configure \
