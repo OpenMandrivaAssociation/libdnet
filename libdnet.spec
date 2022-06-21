@@ -74,6 +74,8 @@ packet and Ethernet frame transmission.
 %autosetup -n %{name}-%{name}-%{version} -p1
 
 %build
+export CC=gcc
+export CXX=g++
 export PYTHON=%{__python3}
 
 %configure \
