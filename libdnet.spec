@@ -13,6 +13,7 @@ Group:		System/Libraries
 Url:		https://github.com/dugsong/libdnet
 Source0:	http://libdnet.googlecode.com/files/%{name}-%{name}-%{version}.tar.gz
 Patch0:		fix-python-build.patch
+Patch1:		fix-build.patch
 
 BuildRequires:	libtool
 #BuildRequires:	python-pyrex
