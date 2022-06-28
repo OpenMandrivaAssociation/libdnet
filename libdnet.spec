@@ -6,18 +6,22 @@
 
 Summary:	Portable interface to several low-level networking routines
 Name:		libdnet
-Version:	1.14
-Release:	2
+Version:	1.16.1
+Release:	1
 License:	BSD
 Group:		System/Libraries
 Url:		https://github.com/dugsong/libdnet
 Source0:	http://libdnet.googlecode.com/files/%{name}-%{name}-%{version}.tar.gz
 Patch0:		fix-python-build.patch
+# Upstream: https://github.com/ofalk/libdnet/issues/74#issuecomment-1168807531
+Patch1:		fix-build.patch
 
 BuildRequires:	libtool
-BuildRequires:	python-pyrex
+#BuildRequires:	python-pyrex
 BuildRequires:	python-cython
 BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(check)
+BuildRequires:	pkgconfig(libbsd)
 
 %description
 libdnet provides a simplified, portable interface to several
@@ -73,6 +77,8 @@ packet and Ethernet frame transmission.
 %autosetup -n %{name}-%{name}-%{version} -p1
 
 %build
+#export CC=gcc
+#export CXX=g++
 export PYTHON=%{__python3}
 
 %configure \
@@ -103,5 +109,4 @@ sed -i s/"no-undefined"/"no-undefined -Wl,--warn-unresolved-symbols"/ python/Mak
 %doc %{_mandir}/man3/*
 
 %files -n python-dnet
-%{py3_platsitedir}/*.egg-info
-%{py3_platsitedir}/*.so
+%{python_sitearch}/dnet-%{version}-py*.*-linux-*

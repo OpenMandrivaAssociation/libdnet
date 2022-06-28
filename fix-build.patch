@@ -1,0 +1,13 @@
+index d9cbc90..8201104 100644
+--- a/python/dnet.pyx
++++ b/python/dnet.pyx
+@@ -43,6 +43,9 @@ cdef extern from *:
+ cdef extern from "string.h":
+     int     strlcpy(char *dst, char *src, int size)
+ 
++cdef extern from "bsd/string.h":
++    int     strlcpy(char *dst, char *src, int size)
++
+ cdef __memcpy(char *dst, object src, int n):
+     if PyBytes_Size(src) != n:
+         raise ValueError, "not a %d-byte binary string: %r" % (n, src)
