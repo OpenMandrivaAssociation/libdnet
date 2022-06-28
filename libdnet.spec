@@ -108,5 +108,4 @@ sed -i s/"no-undefined"/"no-undefined -Wl,--warn-unresolved-symbols"/ python/Mak
 %doc %{_mandir}/man3/*
 
 %files -n python-dnet
-#{py3_platsitedir}/*.egg-info
-#{py3_platsitedir}/*.so
+%{python_sitearch}/dnet-%{version}-py*.*-linux-*
