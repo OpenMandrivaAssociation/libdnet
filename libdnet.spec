@@ -7,7 +7,7 @@
 Summary:	Portable interface to several low-level networking routines
 Name:		libdnet
 Version:	1.16.3
-Release:	1
+Release:	2
 License:	BSD
 Group:		System/Libraries
 Url:		https://github.com/dugsong/libdnet
