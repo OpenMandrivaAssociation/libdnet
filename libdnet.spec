@@ -6,12 +6,13 @@
 
 Summary:	Portable interface to several low-level networking routines
 Name:		libdnet
-Version:	1.16.3
-Release:	2
+Version:	1.16.4
+Release:	1
 License:	BSD
 Group:		System/Libraries
 Url:		https://github.com/dugsong/libdnet
-Source0:	http://libdnet.googlecode.com/files/%{name}-%{name}-%{version}.tar.gz
+Source0:	https://github.com/ofalk/libdnet/archive/refs/tags/%{version}/libdnet-libdnet-%{version}.tar.gz
+#Source0:	http://libdnet.googlecode.com/files/%{name}-%{name}-%{version}.tar.gz
 #Patch0:		fix-python-build.patch
 # Upstream: https://github.com/ofalk/libdnet/issues/74#issuecomment-1168807531
 #Patch1:		fix-build.patch
