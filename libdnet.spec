@@ -1,3 +1,5 @@
+%global optflags %{optflags} -Wno-incompatible-function-pointer-types
+
 %define major	1
 %define libname	%mklibname dnet %{major}
 %define devname	%mklibname dnet -d
