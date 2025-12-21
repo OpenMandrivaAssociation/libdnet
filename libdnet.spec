@@ -19,6 +19,11 @@ Source0:	https://github.com/ofalk/libdnet/archive/refs/tags/%{version}/libdnet-l
 # Upstream: https://github.com/ofalk/libdnet/issues/74#issuecomment-1168807531
 #Patch1:		fix-build.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libtool
 #BuildRequires:	python-pyrex
 BuildRequires:	python-cython
